@@ -230,11 +230,16 @@ body {
 .gallery-photo {
   aspect-ratio: 1 / 1;
   border-radius: var(--radius);
-  overflow: hidden;
+  overflow: visible;
   background: #f0ede8;
   display: block;
   cursor: zoom-in;
   position: relative;
+  z-index: 1;
+}
+
+.gallery-photo:hover {
+  z-index: 50;
 }
 
 .gallery-photo img {
@@ -242,10 +247,17 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  border-radius: var(--radius);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s ease,
+              object-fit 0s;
 }
 
-.gallery-photo:hover img { transform: scale(1.03); }
+.gallery-photo:hover img {
+  transform: scale(2.2);
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
 
 /* ── Photo card ── */
 .photo-card {
@@ -1136,30 +1148,6 @@ body {
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<script>
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lightbox-img');
-const lbClose = document.getElementById('lightbox-close');
 
-document.querySelectorAll('.gallery-photo img').forEach(img => {
-  img.addEventListener('click', e => {
-    e.stopPropagation();
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-});
-
-function closeLightbox() {
-  lb.classList.remove('open');
-  lbImg.src = '';
-  document.body.style.overflow = '';
-}
-
-lb.addEventListener('click', closeLightbox);
-lbClose.addEventListener('click', closeLightbox);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-</script>
 </body>
 </html>
