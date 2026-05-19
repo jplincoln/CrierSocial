@@ -230,12 +230,17 @@ body {
 .gallery-photo {
   aspect-ratio: 1 / 1;
   border-radius: var(--radius);
-  overflow: visible;
-  background: #f0ede8;
+  overflow: hidden;
+  background: var(--cream);
   display: block;
-  cursor: zoom-in;
+  cursor: default;
   position: relative;
   z-index: 1;
+}
+
+.gallery-photo:hover {
+  overflow: visible;
+  z-index: 50;
 }
 
 .gallery-photo:hover {
@@ -254,9 +259,9 @@ body {
 }
 
 .gallery-photo:hover img {
-  transform: scale(2.2);
+  transform: scale(1);
   object-fit: contain;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  background: var(--cream);
 }
 
 /* ── Photo card ── */
@@ -508,7 +513,7 @@ body {
   <div class="hero-left">
     <div class="hero-eyebrow">Crier Communications</div>
     <h1 class="hero-headline">Social media that<br><em>sells product.</em></h1>
-    <p class="hero-body">We build CPG food and beverage social presences that drive real retail velocity — not just likes. Select a client below to explore recent work.</p>
+    <p class="hero-body">We build CPG food and beverage social presences that drive retail velocity — not just likes. Select a client below to explore current work or the Food Styling &amp; Photography tab for past client work.</p>
   </div>
   <div class="hero-stats">
     <div class="stat">
