@@ -219,6 +219,32 @@ body {
   align-items: start;
 }
 
+/* ── Photo gallery grid (no overlays) ── */
+.photo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.gallery-photo {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #f0ede8;
+  display: block;
+}
+
+.gallery-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-photo:hover img { transform: scale(1.03); }
+
 /* ── Photo card ── */
 .photo-card {
   border-radius: var(--radius);
@@ -444,6 +470,7 @@ body {
   <button class="client-btn"        role="tab" aria-selected="false" data-panel="freshe">Freshe Meals</button>
   <button class="client-btn"        role="tab" aria-selected="false" data-panel="foodforlife">Food for Life</button>
   <button class="client-btn"        role="tab" aria-selected="false" data-panel="henrylisa">Henry &amp; Lisa's</button>
+  <button class="client-btn"        role="tab" aria-selected="false" data-panel="foodstyling">Food Styling &amp; Photography</button>
 </nav>
 
 <!-- ── Main ── -->
@@ -698,7 +725,7 @@ body {
         <div class="panel-name">Food for Life</div>
         <div class="panel-handle"><a href="https://www.instagram.com/foodforlifebaking/" target="_blank" rel="noopener">@foodforlifebaking</a></div>
       </div>
-      <div class="panel-count">4 posts</div>
+      <div class="panel-count">12 posts</div>
     </div>
 
     <div class="post-grid">
@@ -747,6 +774,95 @@ body {
         </div>
       </a>
 
+
+      <!-- Photo 5: Ezekiel pita picnic board -->
+      <a class="photo-card" href="https://www.instagram.com/p/DYNIyWYjlE1/" target="_blank" rel="noopener">
+        <img src="ffl-5.png" alt="Food for Life Ezekiel pita picnic board with veggies and hummus" loading="lazy">
+        <div class="photo-hover-overlay">
+          <div class="photo-hover-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+          </div>
+          <span class="photo-hover-label">View on Instagram</span>
+        </div>
+      </a>
+
+      <!-- Photo 6: Ezekiel veggie burger -->
+      <a class="photo-card" href="https://www.instagram.com/p/DWb0FzrDYsx/" target="_blank" rel="noopener">
+        <img src="ffl-6.png" alt="Food for Life Ezekiel sprouted burger bun with veggie patty" loading="lazy">
+        <div class="photo-hover-overlay">
+          <div class="photo-hover-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+          </div>
+          <span class="photo-hover-label">View on Instagram</span>
+        </div>
+      </a>
+
+      <!-- Photo 7: 6 toast toppings flatlay -->
+      <a class="photo-card" href="https://www.instagram.com/p/DWjgBYZjd0m/" target="_blank" rel="noopener">
+        <img src="ffl-7.png" alt="Food for Life six toast topping variations flatlay" loading="lazy">
+        <div class="photo-hover-overlay">
+          <div class="photo-hover-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+          </div>
+          <span class="photo-hover-label">View on Instagram</span>
+        </div>
+      </a>
+
+      <!-- Reel 8: Sprouted corn tortilla fajita -->
+      <a class="video-poster-card" href="https://www.instagram.com/p/DWO56gKSVvZ/" target="_blank" rel="noopener">
+        <img src="ffl-8.png" alt="Food for Life sprouted corn tortilla veggie fajita reel" loading="lazy">
+        <div class="play-overlay">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="play-label">Play on Instagram</span>
+        </div>
+      </a>
+
+      <!-- Photo 9: Ezekiel low sodium open sandwich -->
+      <a class="photo-card" href="https://www.instagram.com/p/DUdmR_ODAUX/" target="_blank" rel="noopener">
+        <img src="ffl-9.png" alt="Food for Life Ezekiel 4:9 low sodium open face sandwich" loading="lazy">
+        <div class="photo-hover-overlay">
+          <div class="photo-hover-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+          </div>
+          <span class="photo-hover-label">View on Instagram</span>
+        </div>
+      </a>
+
+      <!-- Photo 10: Gluten free veggie sandwich -->
+      <a class="photo-card" href="https://www.instagram.com/p/DTaoW2QjwIo/" target="_blank" rel="noopener">
+        <img src="ffl-10.png" alt="Food for Life gluten free sprouted bread veggie sandwich" loading="lazy">
+        <div class="photo-hover-overlay">
+          <div class="photo-hover-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+          </div>
+          <span class="photo-hover-label">View on Instagram</span>
+        </div>
+      </a>
+
+      <!-- Photo 11: Ezekiel stacked sandwich cross-section -->
+      <a class="photo-card" href="https://www.instagram.com/p/DSi85B6jcCx/" target="_blank" rel="noopener">
+        <img src="ffl-11.png" alt="Food for Life Ezekiel 4:9 stacked veggie sandwich cross section" loading="lazy">
+        <div class="photo-hover-overlay">
+          <div class="photo-hover-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+          </div>
+          <span class="photo-hover-label">View on Instagram</span>
+        </div>
+      </a>
+
+      <!-- Photo 12: Sprouted corn tortilla nachos -->
+      <a class="photo-card" href="https://www.instagram.com/p/DKACG1_tRIG/" target="_blank" rel="noopener">
+        <img src="ffl-12.png" alt="Food for Life sprouted corn tortilla skillet nachos" loading="lazy">
+        <div class="photo-hover-overlay">
+          <div class="photo-hover-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--orange)" stroke="none"/></svg>
+          </div>
+          <span class="photo-hover-label">View on Instagram</span>
+        </div>
+      </a>
+
     </div>
   </div>
 
@@ -784,6 +900,22 @@ body {
         </div>
       </a>
 
+    </div>
+  </div>
+
+
+  <!-- Food Styling & Photography -->
+  <div class="client-panel" id="panel-foodstyling" role="tabpanel">
+    <div class="panel-header">
+      <div>
+        <div class="panel-name">Food Styling &amp; Photography</div>
+        <div class="panel-handle">Crier-produced content</div>
+      </div>
+      <div class="panel-count">0 photos</div>
+    </div>
+
+    <div class="photo-gallery-grid">
+      <!-- Photos will be added here -->
     </div>
   </div>
 
