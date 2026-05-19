@@ -218,80 +218,130 @@ body {
   align-items: start;
 }
 
-/* Instagram embed card */
-.embed-card {
+/* ── Photo card ── */
+.photo-card {
   background: var(--warm-white);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   overflow: hidden;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.photo-card a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #f0ede8;
+}
+.photo-card a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.photo-card a:hover img { transform: scale(1.03); }
+.photo-card-meta {
+  padding: 12px 14px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.photo-card-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+}
+.photo-card-link {
+  font-size: 11px;
+  color: var(--orange);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.photo-card-link:hover { text-decoration: underline; }
+
+/* ── Video poster card ── */
+.video-poster-card {
+  background: var(--warm-white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.video-poster-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+.video-poster-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+.video-poster-wrap:hover img { transform: scale(1.03); opacity: 0.65; }
+.play-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.video-poster-wrap:hover .play-overlay { opacity: 1; }
+.play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+.play-btn svg { width: 24px; height: 24px; fill: var(--orange); margin-left: 3px; }
+.play-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
 }
 
-.embed-card blockquote {
-  width: 100% !important;
-  min-width: unset !important;
-  margin: 0 !important;
-}
-
-/* Video card */
+/* ── Native video card (Slack) ── */
 .video-card {
   background: var(--warm-white);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   overflow: hidden;
 }
-
-.video-wrap {
-  position: relative;
-  width: 100%;
-  background: #000;
-}
-
-.video-wrap video {
-  width: 100%;
-  display: block;
-  max-height: 540px;
-  object-fit: contain;
-}
-
+.video-wrap { position: relative; width: 100%; background: #000; }
+.video-wrap video { width: 100%; display: block; max-height: 480px; object-fit: contain; }
 .video-meta {
-  padding: 14px 16px;
+  padding: 12px 14px;
   border-top: 1px solid var(--rule);
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
-.video-label {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-}
-
+.video-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
 .video-badge {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: var(--orange-light);
-  color: var(--orange);
-  border: 1px solid rgba(232,80,42,0.2);
-  border-radius: 3px;
-  padding: 2px 8px;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--orange-light); color: var(--orange);
+  border: 1px solid rgba(232,80,42,0.2); border-radius: 3px; padding: 2px 8px;
 }
-
-/* Fallback link */
-.fallback {
-  font-size: 11px;
-  color: var(--ink-light);
-  margin-top: 10px;
-  text-align: center;
-}
-.fallback a { color: var(--orange); text-decoration: none; }
-.fallback a:hover { text-decoration: underline; }
 
 /* ── Placeholder panel ── */
 .placeholder-grid {
@@ -412,74 +462,100 @@ body {
 
     <div class="post-grid">
 
-      <!-- Slack MP4 -->
+      <!-- Slack MP4 native video -->
       <div class="video-card">
         <div class="video-wrap">
-          <video controls preload="metadata" poster="">
+          <video controls preload="metadata">
             <source src="https://crier.slack.com/files/U0BPXRV6E/F0B4RJ95Z9B/bf-march-tiramisu-social.mp4" type="video/mp4">
-            Your browser does not support video.
           </video>
         </div>
         <div class="video-meta">
-          <span class="video-badge">Video</span>
+          <span class="video-badge">Reel</span>
           <span class="video-label">March Tiramisu</span>
         </div>
       </div>
 
-      <!-- Instagram post 1 -->
-      <div class="embed-card">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/bellwetherfarms/p/DXcQ_9BDQvH/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:calc(100% - 2px);">
-        </blockquote>
-        <p class="fallback"><a href="https://www.instagram.com/bellwetherfarms/p/DXcQ_9BDQvH/" target="_blank" rel="noopener">View on Instagram →</a></p>
+      <!-- Photo 1: Ricotta pasta -->
+      <div class="photo-card">
+        <a href="https://www.instagram.com/bellwetherfarms/p/DXcQ_9BDQvH/" target="_blank" rel="noopener">
+          <img src="bf-1.png" alt="Bellwether Farms whole milk ricotta pasta" loading="lazy">
+        </a>
+        <div class="photo-card-meta">
+          <span class="photo-card-label">Whole Milk Ricotta</span>
+          <a class="photo-card-link" href="https://www.instagram.com/bellwetherfarms/p/DXcQ_9BDQvH/" target="_blank" rel="noopener">View on Instagram →</a>
+        </div>
       </div>
 
-      <!-- Instagram reel 1 -->
-      <div class="embed-card">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/bellwetherfarms/reel/DNlWXcyRAmV/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:calc(100% - 2px);">
-        </blockquote>
-        <p class="fallback"><a href="https://www.instagram.com/bellwetherfarms/reel/DNlWXcyRAmV/" target="_blank" rel="noopener">View on Instagram →</a></p>
+      <!-- Photo 2: Avocado toast -->
+      <div class="photo-card">
+        <a href="https://www.instagram.com/bellwetherfarms/p/DVL9fuCD1Uf/" target="_blank" rel="noopener">
+          <img src="bf-2.png" alt="Bellwether Farms ricotta avocado toast" loading="lazy">
+        </a>
+        <div class="photo-card-meta">
+          <span class="photo-card-label">Avocado &amp; Ricotta Toast</span>
+          <a class="photo-card-link" href="https://www.instagram.com/bellwetherfarms/p/DVL9fuCD1Uf/" target="_blank" rel="noopener">View on Instagram →</a>
+        </div>
       </div>
 
-      <!-- Instagram post 2 -->
-      <div class="embed-card">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/bellwetherfarms/p/DVL9fuCD1Uf/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:calc(100% - 2px);">
-        </blockquote>
-        <p class="fallback"><a href="https://www.instagram.com/bellwetherfarms/p/DVL9fuCD1Uf/" target="_blank" rel="noopener">View on Instagram →</a></p>
+      <!-- Photo 3: Grilled peaches -->
+      <div class="photo-card">
+        <a href="https://www.instagram.com/bellwetherfarms/reel/DNlWXcyRAmV/" target="_blank" rel="noopener">
+          <img src="bf-3.png" alt="Bellwether Farms crème fraîche grilled peaches" loading="lazy">
+        </a>
+        <div class="photo-card-meta">
+          <span class="photo-card-label">Grilled Peaches</span>
+          <a class="photo-card-link" href="https://www.instagram.com/bellwetherfarms/reel/DNlWXcyRAmV/" target="_blank" rel="noopener">View on Instagram →</a>
+        </div>
       </div>
 
-      <!-- Instagram reel 2 -->
-      <div class="embed-card">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/bellwetherfarms/reel/DRr6Wm_jCI0/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:calc(100% - 2px);">
-        </blockquote>
-        <p class="fallback"><a href="https://www.instagram.com/bellwetherfarms/reel/DRr6Wm_jCI0/" target="_blank" rel="noopener">View on Instagram →</a></p>
-      </div>
+      <!-- Video poster: Rigatoni reel -->
+      <a class="video-poster-card" href="https://www.instagram.com/p/DO_a1Zjge0_/" target="_blank" rel="noopener">
+        <div class="video-poster-wrap">
+          <img src="bf-4.png" alt="Bellwether Farms ricotta rigatoni reel" loading="lazy">
+          <div class="play-overlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="play-label">Play on Instagram</span>
+          </div>
+        </div>
+        <div class="photo-card-meta">
+          <span class="photo-card-label">Ricotta Rigatoni · Reel</span>
+          <span class="photo-card-link">Watch →</span>
+        </div>
+      </a>
 
-      <!-- Instagram reel 3 -->
-      <div class="embed-card">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/bellwetherfarms/reel/DNpBip0N32g/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:calc(100% - 2px);">
-        </blockquote>
-        <p class="fallback"><a href="https://www.instagram.com/bellwetherfarms/reel/DNpBip0N32g/" target="_blank" rel="noopener">View on Instagram →</a></p>
-      </div>
+      <!-- Reel 2 poster placeholder -->
+      <a class="video-poster-card" href="https://www.instagram.com/bellwetherfarms/reel/DRr6Wm_jCI0/" target="_blank" rel="noopener">
+        <div class="video-poster-wrap" style="background:#f0ede8;">
+          <div class="play-overlay" style="opacity:1;">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="play-label" style="color:var(--ink-light);text-shadow:none;">View Reel on Instagram</span>
+          </div>
+        </div>
+        <div class="photo-card-meta">
+          <span class="photo-card-label">Reel</span>
+          <span class="photo-card-link">Watch →</span>
+        </div>
+      </a>
+
+      <!-- Reel 3 poster placeholder -->
+      <a class="video-poster-card" href="https://www.instagram.com/bellwetherfarms/reel/DNpBip0N32g/" target="_blank" rel="noopener">
+        <div class="video-poster-wrap" style="background:#f0ede8;">
+          <div class="play-overlay" style="opacity:1;">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="play-label" style="color:var(--ink-light);text-shadow:none;">View Reel on Instagram</span>
+          </div>
+        </div>
+        <div class="photo-card-meta">
+          <span class="photo-card-label">Reel</span>
+          <span class="photo-card-link">Watch →</span>
+        </div>
+      </a>
 
     </div>
   </div>
@@ -603,8 +679,6 @@ body {
   <div class="footer-contact">jp@crierpr.com &nbsp;·&nbsp; 310.274.1072 x201</div>
 </footer>
 
-<!-- Instagram embed script -->
-<script async src="//www.instagram.com/embed.js"></script>
 
 <!-- Tab nav script -->
 <script>
@@ -622,8 +696,6 @@ body {
       btn.setAttribute('aria-selected', 'true');
       document.getElementById('panel-' + target).classList.add('active');
 
-      // Re-trigger Instagram embed processing when switching tabs
-      if (window.instgrm) window.instgrm.Embeds.process();
     });
   });
 </script>
