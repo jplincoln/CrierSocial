@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crier Communications — Social Media Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #c8a97e;
+  --orange: #e8502a;
+  --bg: #0a0906;
+  --surface: #111009;
+  --muted: #555048;
+  --text-dim: #8a8070;
+  --text-mid: #b0a898;
+  --text-bright: #f0ece4;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', sans-serif;
+}
+
+html, body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text-bright);
+  font-family: var(--sans);
+  font-weight: 300;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ── Header ── */
+.site-header {
+  width: 100%;
+  padding: 32px 48px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid rgba(200,169,126,0.15);
+  padding-bottom: 24px;
+}
+
+.logo-wrap img {
+  height: 52px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.header-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.header-label span {
+  color: var(--gold);
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 64px 48px 48px;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 68px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-bright);
+  margin-bottom: 20px;
+}
+
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.hero-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-mid);
+  max-width: 600px;
+}
+
+/* ── Stat strip ── */
+.stat-strip {
+  display: flex;
+  gap: 0;
+  border-top: 0.5px solid rgba(200,169,126,0.15);
+  border-bottom: 0.5px solid rgba(200,169,126,0.15);
+  margin: 0 0 64px;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 28px 48px;
+  border-right: 0.5px solid rgba(200,169,126,0.12);
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 42px;
+  color: var(--gold);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Section label ── */
+.section-label {
+  padding: 0 48px 24px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ── Instagram embed grid ── */
+.embed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 0 48px 64px;
+  align-items: start;
+}
+
+.embed-card {
+  background: rgba(255,255,255,0.02);
+  border: 0.5px solid rgba(200,169,126,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.embed-card-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.embed-card .instagram-media {
+  min-width: unset !important;
+  width: 100% !important;
+}
+
+/* ── Fallback links ── */
+.fallback-note {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 14px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.fallback-note a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(200,169,126,0.4);
+}
+
+/* ── Footer ── */
+.site-footer {
+  border-top: 0.5px solid rgba(200,169,126,0.15);
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.footer-contact {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 700px) {
+  .site-header, .hero, .section-label, .embed-grid, .site-footer { padding-left: 20px; padding-right: 20px; }
+  .embed-grid { grid-template-columns: 1fr; }
+  .stat-strip { flex-direction: column; }
+  .stat-item { border-right: none; border-bottom: 0.5px solid rgba(200,169,126,0.12); }
+  .stat-item:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <div class="logo-wrap">
+    <img src="data:image/jpeg;base64,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"
+      alt="Crier Communications" />
+  </div>
+  <div class="header-label">Social Media Work &nbsp;·&nbsp; <span>Since 1998</span></div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-eyebrow">Crier Communications · Social Media</div>
+  <h1 class="hero-headline">Content that moves<br>product off shelves.</h1>
+  <div class="gold-rule"></div>
+  <p class="hero-body">From brand launch to category leadership — Crier builds social presences that drive measurable retail velocity, earn media pickup, and turn followers into brand advocates. CPG food and beverage social media has been our specialty since 1998.</p>
+</section>
+
+<!-- ── Stat Strip ── -->
+<div class="stat-strip">
+  <div class="stat-item">
+    <div class="stat-num">156M</div>
+    <div class="stat-label">Social impressions · Halo Top launch</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">115%</div>
+    <div class="stat-label">Fan increase · Halo Top</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">736K</div>
+    <div class="stat-label">Social shares · Emmy's Organics</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">928%</div>
+    <div class="stat-label">Fan increase · Holy Grail Steak Co.</div>
+  </div>
+</div>
+
+<!-- ── Embeds ── -->
+<div class="section-label">Recent work — live posts</div>
+
+<div class="embed-grid">
+
+  <div class="embed-card">
+    <div class="embed-card-label">Post 01</div>
+    <blockquote class="instagram-media"
+      data-instgrm-captioned
+      data-instgrm-permalink="https://www.instagram.com/p/DYhrL1bykjb/"
+      data-instgrm-version="14"
+      style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+    </blockquote>
+    <p class="fallback-note">
+      If the embed doesn't load, <a href="https://www.instagram.com/p/DYhrL1bykjb/" target="_blank" rel="noopener">view on Instagram →</a>
+    </p>
+  </div>
+
+  <div class="embed-card">
+    <div class="embed-card-label">Post 02</div>
+    <blockquote class="instagram-media"
+      data-instgrm-captioned
+      data-instgrm-permalink="https://www.instagram.com/p/DYccDbQFbxh/"
+      data-instgrm-version="14"
+      style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+    </blockquote>
+    <p class="fallback-note">
+      If the embed doesn't load, <a href="https://www.instagram.com/p/DYccDbQFbxh/" target="_blank" rel="noopener">view on Instagram →</a>
+    </p>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="site-footer">
+  <div class="footer-copy">© Crier Communications · crierpr.com</div>
+  <div class="footer-contact">jp@crierpr.com &nbsp;·&nbsp; 310.274.1072 x201</div>
+</footer>
+
+<!-- Instagram embed script — must load after blockquotes -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+</body>
+</html>
