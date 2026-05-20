@@ -35,97 +35,104 @@ body {
 }
 
 /* ── Header ── */
-.header {
-  background: var(--warm-white);
-  border-bottom: 1px solid var(--rule);
-  padding: 0 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 68px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 1px 0 var(--rule);
-}
+/* ── Header (stripped down — just nav tag) ── */
+.header { display: none; }
 
-.logo img {
-  height: 44px;
-  width: auto;
-  border-radius: 5px;
-  display: block;
-}
-
-.header-tag {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-}
-.header-tag span { color: var(--orange); }
-
-/* ── Hero ── */
+/* ── Hero: logo | copy | tag+stats ── */
 .hero {
   background: var(--warm-white);
   border-bottom: 1px solid var(--rule);
-  padding: 56px 48px 52px;
+  padding: 32px 48px 28px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 40px;
+  align-items: stretch;
+}
+
+.logo {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
+  align-items: center;
 }
 
-.hero-left { max-width: 600px; }
-
-.hero-eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 16px;
+.logo img {
+  height: 168px;
+  width: auto;
+  border-radius: 8px;
+  display: block;
 }
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 520px;
+}
+
+.hero-eyebrow { display: none; }
 
 .hero-headline {
   font-family: var(--serif);
-  font-size: clamp(36px, 4.5vw, 58px);
-  line-height: 1.1;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.08;
   color: var(--ink);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .hero-body {
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.72;
   color: var(--ink-mid);
-  max-width: 480px;
+  max-width: 420px;
+}
+
+/* Right column: tag top, stats bottom */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.hero-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-align: right;
+  white-space: nowrap;
+}
+.hero-tag a {
+  color: var(--orange);
+  text-decoration: none;
 }
 
 .hero-stats {
   display: flex;
-  gap: 40px;
-  flex-shrink: 0;
+  gap: 28px;
+  align-items: flex-end;
 }
 
 .stat { text-align: right; }
 
 .stat-num {
   font-family: var(--serif);
-  font-size: 40px;
+  font-size: 36px;
   color: var(--orange);
   line-height: 1;
   display: block;
 }
 
 .stat-label {
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 10px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-light);
-  margin-top: 4px;
+  margin-top: 3px;
   display: block;
 }
 
-/* ── Client Nav ── */
+/* ── Client Nav — tight ── */
 .client-nav {
   background: var(--warm-white);
   border-bottom: 1px solid var(--rule);
@@ -143,9 +150,9 @@ body {
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
-  padding: 18px 28px;
+  padding: 9px 22px;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--ink-light);
@@ -162,6 +169,12 @@ body {
   border-bottom-color: var(--orange);
   font-weight: 500;
 }
+
+/* ── Stat strip hidden (stats now in hero) ── */
+.stat-strip { display: none; }
+.stat-strip-item { display: none; }
+.stat-strip-num { display: none; }
+.stat-strip-label { display: none; }
 
 /* ── Main content ── */
 .main {
@@ -499,33 +512,32 @@ body {
 </head>
 <body>
 
-<!-- ── Header ── -->
-<header class="header">
+<!-- ── Hero ── -->
+<section class="hero">
   <div class="logo">
     <a href="https://crierpr.com" target="_blank" rel="noopener"><img src="CrierLogo.png" alt="Crier Communications"></a>
   </div>
-  <div class="header-tag">Social Media Work &nbsp;·&nbsp; <a href="https://crierpr.com" target="_blank" rel="noopener" style="color:var(--orange);text-decoration:none;letter-spacing:0.18em;">crierpr.com</a></div>
-</header>
-
-<!-- ── Hero ── -->
-<section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Crier Communications</div>
-    <h1 class="hero-headline">Social media that<br><em>sells product.</em></h1>
+    <h1 class="hero-headline">Social media<br><em>by humans.</em></h1>
     <p class="hero-body">We build CPG food and beverage social presences that drive retail velocity — not just likes. Select a client below to explore current work or the Food Styling &amp; Photography tab for past client work.</p>
   </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-num">156M</span>
-      <span class="stat-label">Social impressions<br>Halo Top launch</span>
+  <div class="hero-right">
+    <div class="hero-tag">
+      Social Media Work &nbsp;·&nbsp; <a href="https://crierpr.com" target="_blank" rel="noopener">crierpr.com</a>
     </div>
-    <div class="stat">
-      <span class="stat-num">928%</span>
-      <span class="stat-label">Fan increase<br>Holy Grail Steak Co.</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">736K</span>
-      <span class="stat-label">Social shares<br>Emmy's Organics</span>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">156M</span>
+        <span class="stat-label">Social impressions<br>Halo Top</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">928%</span>
+        <span class="stat-label">Fan increase<br>Holy Grail Steak Co.</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">736K</span>
+        <span class="stat-label">Social shares<br>Emmy's Organics</span>
+      </div>
     </div>
   </div>
 </section>
@@ -538,6 +550,22 @@ body {
   <button class="client-btn"        role="tab" aria-selected="false" data-panel="henrylisa">Henry &amp; Lisa’s</button>
   <button class="client-btn"        role="tab" aria-selected="false" data-panel="foodstyling">Food Styling &amp; Photography</button>
 </nav>
+
+<!-- ── Stat strip ── -->
+<div class="stat-strip">
+  <div class="stat-strip-item">
+    <span class="stat-strip-num">156M</span>
+    <span class="stat-strip-label">Social impressions · Halo Top</span>
+  </div>
+  <div class="stat-strip-item">
+    <span class="stat-strip-num">928%</span>
+    <span class="stat-strip-label">Fan increase · Holy Grail Steak Co.</span>
+  </div>
+  <div class="stat-strip-item">
+    <span class="stat-strip-num">736K</span>
+    <span class="stat-strip-label">Social shares · Emmy's Organics</span>
+  </div>
+</div>
 
 <!-- ── Main ── -->
 <main class="main">
