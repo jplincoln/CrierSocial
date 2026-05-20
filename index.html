@@ -230,16 +230,15 @@ body {
 .gallery-photo {
   aspect-ratio: 1 / 1;
   border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--cream);
+  overflow: visible;
+  background: #f0ede8;
   display: block;
-  cursor: default;
+  cursor: zoom-in;
   position: relative;
   z-index: 1;
 }
 
 .gallery-photo:hover {
-  overflow: visible;
   z-index: 50;
 }
 
@@ -259,9 +258,9 @@ body {
 }
 
 .gallery-photo:hover img {
-  transform: scale(1);
+  transform: scale(1.6);
   object-fit: contain;
-  background: var(--cream);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
 /* ── Photo card ── */
